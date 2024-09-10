@@ -1,13 +1,16 @@
 package com.room.room.rooms.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Map;
 
-import com.room.room.rooms.service.RoomsService;
+import org.apache.ibatis.annotations.Mapper;
+
+import com.room.room.rooms.domain.RoomsRequestDTO;
+import com.room.room.rooms.domain.RoomsResponseDTO;
 
 @Mapper
-public class RoomsMapper {
+public interface RoomsMapper {
  
-    @Autowired
-    private RoomsService roomsService;
+   public void             insertRow(RoomsRequestDTO params);
+   public RoomsResponseDTO findRow(Map<String, Integer> map);
+   public void             deleteRow(Map<String, Integer> map);
 }

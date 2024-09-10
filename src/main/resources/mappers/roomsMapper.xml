@@ -4,4 +4,29 @@
 
 <mapper namespace="com.room.room.rooms.dao.RoomsMapper">
 
+    <!-- insertRow --> 
+
+    <insert id="insertRow"
+            parameterType="com.room.room.rooms.domain.RoomsRequestDTO">
+        insert into tb_rooms(title, content)
+        values (#{title}, #{content})
+    </insert>
+
+    <!-- findRow --> 
+
+    <select id="findRow"
+            parameterType="java.util.HashMap"
+            resultType="com.room.room.rooms.domain.RoomsResponseDTO">
+        select *
+        from   tb_rooms
+        where  id = #{id}
+    </select>
+
+    <!-- deleteRow --> 
+
+    <delete id="deleteRow"
+            parameterType="java.util.HashMap">
+        delete from tb_rooms
+        where       id=#{id}
+    </delete>
 </mapper>
