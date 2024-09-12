@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -27,8 +28,8 @@ public class RoomsController {
     @Autowired
     private RoomsService roomsService;
 
-    @PostMapping("/save")
-    public ResponseEntity<Void> save(@RequestBody RoomsRequestDTO params) {
+    @PostMapping("/create")
+    public ResponseEntity<Void> create(@RequestBody RoomsRequestDTO params) {
         System.out.println("client endpoint : /rooms/save");
         System.out.println("params : "+ params);
         roomsService.create(params);
@@ -56,6 +57,15 @@ public class RoomsController {
         map.put("id", id);
 
         roomsService.delete(map);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Void> update(@RequestBody RoomsRequestDTO params) {
+        System.out.println("client endpoint : /rooms/update");
+        System.out.println("params : "+ params);
+        
+        roomsService.update(params);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     

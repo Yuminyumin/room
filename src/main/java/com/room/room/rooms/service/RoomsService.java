@@ -1,6 +1,5 @@
 package com.room.room.rooms.service;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +29,10 @@ public class RoomsService {
     public void delete(Map<String, Integer> map){
         System.out.println("debug >>> service delete "+ roomsMapper);
         roomsMapper.deleteRow(map);
+    }
+
+    public void update(RoomsRequestDTO params){
+        System.out.println("debug >>> service update "+ roomsMapper);
+        roomsMapper.updateRow(params);
     }
 }
