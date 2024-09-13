@@ -4,12 +4,20 @@
 
 <mapper namespace="com.room.room.rooms.dao.RoomsMapper">
 
+    <!-- findAllRow --> 
+
+    <select id="findAllRow"
+            resultType="responseDTO">
+        select ID, TITLE, content, memo, tel
+        from   tb_rooms
+    </select>
+
     <!-- insertRow --> 
 
     <insert id="insertRow"
             parameterType="requestDTO">
-        insert into tb_rooms(title, content)
-        values (#{title}, #{content})
+        insert into tb_rooms(title, content, memo, tel)
+        values (#{title}, #{content}, #{memo}, #{tel})
     </insert>
 
     <!-- findRow --> 
@@ -35,7 +43,9 @@
     <update id="updateRow"
             parameterType="requestDTO">
         update tb_rooms
-        set    title = #{title}, content = #{content}
+        set    title = #{title}, content = #{content}, memo = #{memo}, tel = #{tel}
         where  id = #{id}
     </update>
+
+    
 </mapper>

@@ -1,6 +1,7 @@
 package com.room.room.rooms.service;
 
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,11 @@ public class RoomsService {
     
     @Autowired
     private RoomsMapper roomsMapper;
+
+    public List<RoomsResponseDTO> findAll(){
+        System.out.println("debug >>> service findAll " + roomsMapper);
+        return roomsMapper.findAllRow();
+    }
 
     public void create(RoomsRequestDTO params){
         System.out.println("debug >>> service create " + roomsMapper);

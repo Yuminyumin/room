@@ -7,4 +7,6 @@ public class RoomsRequestDTO {
     private Integer id;
     private String  title;
     private String  content;
+    private String  memo;
+    private String  tel;
 }
